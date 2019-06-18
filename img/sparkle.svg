@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210.977" height="244.839" viewBox="0 0 210.977 244.839">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#4bdfea;stroke-miterlimit:10;stroke-width:6.154px}.cls-2{fill:#ffe843}.cls-3{fill:#e54884}.cls-4{fill:#f44d99}
+        </style>
+    </defs>
+    <g id="sparkle" transform="translate(-2899.257 -1854.23)">
+        <path id="Path_190" d="M2928.678 1966.538a16.353 16.353 0 1 1 2.99-22.93 16.354 16.354 0 0 1-2.99 22.93z" class="cls-1" data-name="Path 190"/>
+        <path id="Path_191" d="M3016.473 1874.608l20.376 6.284-20.376 6.284-6.285 20.377-6.284-20.377-20.376-6.284 20.376-6.284 6.284-20.377z" class="cls-2" data-name="Path 191"/>
+        <path id="Path_192" d="M3052.816 1946.578a7.417 7.417 0 1 1-7.417 7.417 7.416 7.416 0 0 1 7.417-7.417z" class="cls-3" data-name="Path 192"/>
+        <path id="Path_193" d="M2965.057 2063.01l6.878-22.3 6.877 22.3 22.3 6.88-22.3 6.878-6.877 22.3-6.878-22.3-22.3-6.878z" class="cls-4" data-name="Path 193"/>
+        <path id="Path_194" d="M3102.329 2033.22a7.906 7.906 0 1 1-7.907 7.907 7.906 7.906 0 0 1 7.907-7.907z" class="cls-2" data-name="Path 194"/>
+    </g>
+</svg>
