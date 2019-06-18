@@ -32,6 +32,29 @@
         overflow: hidden;
     }
 
+    .title-main,
+    .desc {
+        color: rgb(255, 184, 53);
+        font-size: 2.5rem;
+        font-weight: bold;
+        width: 100%;
+        max-width: 1000px;
+        text-align: left;
+        margin: 4.5rem auto;
+    }
+
+    .desc {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    .title-main>.en_title {
+        font-size: 1.5rem;
+        margin-top: 10px;
+        padding-left: 5px;
+    }
+
     .main-section::after {
         content: '';
         position: absolute;
@@ -64,6 +87,24 @@
 
         width: 100%;
         max-width: 1366px;
+
+        transition: .3s;
+    }
+
+    .nav_wrapper {
+        background: rgba(44, 65, 107, 0);
+        transition: .3s;
+    }
+
+    .nav_wrapper.sticky {
+        position: fixed;
+        z-index: 1000;
+        background: #2C416B;
+        width: 100%;
+    }
+
+    .nav_wrapper.sticky>.navbar {
+        height: 90px;
     }
 
     .nav-head,
@@ -128,9 +169,31 @@
         justify-content: flex-end;
     }
 
+    @keyframes float {
+        0% {
+            transform: translatey(0px);
+        }
+
+        50% {
+            transform: translatey(-20px);
+        }
+
+        100% {
+            transform: translatey(0px);
+        }
+    }
+
     .sun {
         position: absolute;
         right: 277px;
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .rock {
+        position: absolute;
+        left: 277px;
+        top: 500px;
+        animation: float 3s ease-in-out infinite;
     }
 
     .intro-section {
@@ -226,6 +289,19 @@
 
     }
 
+    .dec_blue {
+        width: 1198px;
+        height: 53px;
+        opacity: 0.3;
+        border-radius: 27px;
+        background-color: #a4ddf8;
+        position: absolute;
+        right: -50px;
+        bottom: 0px;
+
+        margin-top: 1rem;
+    }
+
     /* .contact::before {
         content: " ";
         position: absolute;
@@ -298,6 +374,7 @@
         color: #fff;
         font-weight: 900;
         padding: 30px 0;
+        line-height: 2rem;
     }
 
     @media screen and (max-width: 1440px) {
@@ -402,31 +479,41 @@
         </div>
     </div>
     <div class="wrapper">
-        <nav class="navbar">
-            <div class="nav-head">
-                <img src="img/logo_title.svg" alt="" class="logo_title">
-            </div>
-            <ul class="nav-foot">
-                <a id="aboutbtn" href="#">
-                    關於我們
-                </a>
-                <a id="serbtn" href="#">
-                    服務項目
-                </a>
-                <a id="contactbtn" href="#">
-                    聯絡我們
-                </a>
-            </ul>
-            <div class="nav-foot collapse">
-                <a href="#" id="hamburger">
-                    <div class="hot-spot">
-                        <div class="ham-m"></div>
-                    </div>
-                </a>
-            </div>
-        </nav>
+        <div class="nav_wrapper" id="main">
+            <nav class="navbar">
+                <div class="nav-head">
+                    <img src="img/logo_title.svg" alt="" class="logo_title">
+                </div>
+                <ul class="nav-foot">
+                    <a id="aboutbtn" href="#">
+                        關於我們
+                    </a>
+                    <a id="serbtn" href="#">
+                        服務項目
+                    </a>
+                    <a id="contactbtn" href="#">
+                        聯絡我們
+                    </a>
+                </ul>
+                <div class="nav-foot collapse">
+                    <a href="#" id="hamburger">
+                        <div class="hot-spot">
+                            <div class="ham-m"></div>
+                        </div>
+                    </a>
+                </div>
+            </nav>
+        </div>
         <div class="main-section">
             <img src="img/SUN.svg" alt="" class="sun" height="350">
+            <img src="img/ROCK.svg" alt="" class="rock" height="50">
+            <div class="title-main">
+                恆星網路科技
+                <div class="en_title">Solar Tech</div>
+            </div>
+            <div class="desc">
+                恆星網路科技 B2B網路軟體服務，<br><br> 您事業的好伙伴。
+            </div>
         </div>
         <div class="intro-section" id="about">
             <div class="intro">
@@ -492,6 +579,7 @@
             <div class="BG-img">
                 <img src="img/ANG_B.png" alt="">
             </div>
+            <div class="dec_blue"></div>
         </div>
         <div class="footer">
             <div class="re">© 2019 SolarTech. All rights reserved.
@@ -503,25 +591,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+
             $('.hot-spot').click(function () {
                 $('.nav-panel').toggleClass('show');
             })
             $("#aboutbtn").click(function () {
                 $('html, body').animate({
-                    scrollTop: $("#about").offset().top
+                    scrollTop: $("#about").offset().top - 70
                 }, 1000);
             });
             $("#serbtn").click(function () {
                 $('html, body').animate({
-                    scrollTop: $("#ser").offset().top
+                    scrollTop: $("#ser").offset().top - 70
                 }, 1000);
             });
             $("#contactbtn").click(function () {
                 $('html, body').animate({
-                    scrollTop: $("#contact").offset().top
+                    scrollTop: $("#contact").offset().top - 50
                 }, 1000);
             });
         })
+        $(function () {
+            $('.nav_wrapper').each(function () {
+                var $window = $(window),
+                    $header = $(this),
+                    headerOffsetTop = $header.offset().top;
+                $window.on('scroll', function () {
+                    if ($window.scrollTop() > headerOffsetTop) {
+                        $header.addClass('sticky');
+                    } else {
+                        $header.removeClass('sticky');
+                    }
+                });
+                $window.trigger('scroll');
+            });
+        });
     </script>
 </body>
 
