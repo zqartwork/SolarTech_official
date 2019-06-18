@@ -6,10 +6,523 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>恆星網路科技</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 </head>
+<style>
+    div {
+        /* border: 1px solid red; */
+    }
+
+    body {
+        font-family: 微軟正黑體;
+    }
+
+    .wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .main-section {
+        width: 100%;
+        height: 500px;
+        max-height: 900px;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .main-section::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(104deg, #191636, #7f9fae);
+        width: 100%;
+        height: 790px;
+        z-index: -10;
+    }
+
+    .main-section::before {
+        content: '';
+        position: absolute;
+        top: 120px;
+        left: 0;
+        background-image: url(img/starz.svg);
+        width: 100%;
+        height: 870px;
+        z-index: -9;
+    }
+
+
+    .navbar {
+        height: 120px;
+        display: flex;
+
+        align-items: center;
+        margin: 0 auto;
+
+        width: 100%;
+        max-width: 1366px;
+    }
+
+    .nav-head,
+    .nav-foot {
+        flex: .5;
+        display: flex;
+    }
+
+    .nav-foot {
+        justify-content: flex-end;
+    }
+
+    .nav-foot>a {
+        margin-left: 75px;
+        color: white;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .nav-head>.logo_title {
+        height: 50px;
+    }
+
+    .hot-spot {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .ham-m {
+        height: 3px;
+        width: 30px;
+        background: #fff;
+        position: relative;
+    }
+
+    .ham-m::before {
+        content: "";
+        height: 3px;
+        width: 40px;
+        background: #fff;
+        position: absolute;
+
+        top: -12px;
+        left: -8px;
+    }
+
+    .ham-m::after {
+        content: "";
+        height: 3px;
+        width: 40px;
+        background: #fff;
+        position: absolute;
+
+        bottom: -12px;
+        left: -8px;
+    }
+
+    .nav-foot.collapse {
+        display: none;
+        justify-content: flex-end;
+    }
+
+    .sun {
+        position: absolute;
+        right: 277px;
+    }
+
+    .intro-section {
+        background: #fff;
+        width: 100%;
+        max-width: 1366px;
+        border-radius: 30px;
+        text-align: center;
+
+        margin: 0 auto;
+        box-shadow: 0 0 20px #00000050;
+
+        padding: 1rem 1rem 5rem 1rem;
+        position: relative;
+
+    }
+
+    .intro-section::before {
+        content: " ";
+        position: absolute;
+        background-image: url(img/BG_ANG.png);
+        height: 920px;
+        width: 920px;
+        z-index: -10;
+        right: -30%;
+        top: 10%;
+    }
+
+    .title_about {
+        color: #2C416B;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 24px;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .en_title {
+        font-size: 16px;
+    }
+
+    .cont_about {
+        padding: 0rem 0 3rem 0;
+        line-height: 24px;
+    }
+
+    .hr {
+        width: 80%;
+        background: rgba(44, 65, 107, 0.315);
+        height: 1px;
+        margin: 0 auto;
+    }
+
+    .service_cont {
+        display: flex;
+        width: 100;
+
+        justify-content: center;
+        align-items: space-between;
+    }
+
+    .ser {
+        padding: 40px 55px;
+        border-radius: 30px;
+        transition-duration: .3s;
+        margin: 0 2rem;
+    }
+
+    .ser:hover {
+        box-shadow: 0 0 15px #00000050;
+    }
+
+    .title_sub {
+        padding: 2rem 0;
+        font-size: 20px;
+        font-weight: 900;
+        color: #2C416B;
+    }
+
+    .more {
+        background: #2c416b;
+        color: white;
+        text-decoration: none;
+        padding: 12px 32px;
+        border-radius: 32px;
+    }
+
+    .contact {
+        width: 100%;
+        text-align: center;
+        padding: 5rem 0 5rem 0;
+        position: relative;
+
+    }
+
+    /* .contact::before {
+        content: " ";
+        position: absolute;
+        background-image: url(img/ANG_B.png);
+        height: 1682px;
+        width: 90%;
+        z-index: -10;
+        top: -140%;
+        left: -30%;
+    } */
+
+    .title_contact {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .email,
+    .add {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .email>.title,
+    .add>.title {
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        margin-right: 3rem;
+        position: relative;
+    }
+
+    .email>.cont,
+    .add>.cont {
+        color: #2C416B;
+        font-weight: 900;
+    }
+
+    .email>.title::before,
+    .add>.title::before {
+        content: " ";
+        height: 40px;
+        width: 400px;
+        background: #2c416b;
+        position: absolute;
+        z-index: -5;
+        top: -54%;
+        right: -15%;
+        border-radius: 6px 40px 40px 6px;
+    }
+
+    .email>.title::before {
+        width: 1000px;
+    }
+
+    .BG-img {
+        position: absolute;
+        top: -145%;
+        z-index: -10;
+        width: 80%;
+        left: -40%;
+    }
+
+    .footer {
+        width: 100%;
+        background: #2C416B;
+        text-align: center;
+        color: #fff;
+        font-weight: 900;
+        padding: 30px 0;
+    }
+
+    @media screen and (max-width: 1440px) {
+        .navbar {
+            width: 90%;
+            max-width: unset;
+        }
+
+        .intro-section {
+            width: 90%;
+            max-width: unset;
+        }
+
+        .ser {
+            padding: 30px 30px;
+            border-radius: 30px;
+            transition-duration: .3s;
+            margin: 0 1rem;
+        }
+    }
+
+    @media (max-width: 1150px) {
+        .nav-foot {
+            display: none;
+        }
+
+        .nav-foot.collapse {
+            display: flex;
+        }
+    }
+
+    @media (max-width: 990px) {
+        .ic_s>img {
+            height: 150px;
+        }
+
+        .title_sub {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .service_cont {
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
+
+        .ser {
+            width: 250px;
+            margin-top: 2rem;
+        }
+
+        .service>.title_about {
+            margin-bottom: 0rem;
+        }
+
+        .intro>.cont_about>.cont {
+            padding: 0 2rem;
+        }
+    }
+
+    .nav-panel {
+        position: fixed;
+        right: -100%;
+        top: 120px;
+
+        background: #2c416b;
+        padding: 2rem 3rem 2rem 3rem;
+        z-index: 1000;
+
+        border-radius: 30px 0 0 30px;
+
+        transition: .5s;
+    }
+
+    .nav-panel.show {
+        right: 0;
+    }
+
+    .nav-panel>.nav-wrapper>ul>a {
+        color: white;
+        text-decoration: none;
+        line-height: 50px;
+    }
+</style>
 
 <body>
+    <div class="nav-panel">
+        <div class="nav-wrapper">
+            <ul>
+                <a href="">
+                    <li>關於恆星</li>
+                </a>
+                <a href="">
+                    <li>服務項目</li>
+                </a>
+                <a href="">
+                    <li>聯絡我們</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper">
+        <nav class="navbar">
+            <div class="nav-head">
+                <img src="img/logo_title.svg" alt="" class="logo_title">
+            </div>
+            <ul class="nav-foot">
+                <a id="aboutbtn" href="#">
+                    關於我們
+                </a>
+                <a id="serbtn" href="#">
+                    服務項目
+                </a>
+                <a id="contactbtn" href="#">
+                    聯絡我們
+                </a>
+            </ul>
+            <div class="nav-foot collapse">
+                <a href="#" id="hamburger">
+                    <div class="hot-spot">
+                        <div class="ham-m"></div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+        <div class="main-section">
+            <img src="img/SUN.svg" alt="" class="sun" height="350">
+        </div>
+        <div class="intro-section" id="about">
+            <div class="intro">
+                <div class="title_about">
+                    <div class="cn_title">關於恆星網路科技</div>
+                    <div class="en_title">ABOUT SOLAR TECH</div>
+                </div>
+                <div class="cont_about">
+                    <p class="cont">
+                        恆星是種由重力凝聚的發光天體，原本浩瀚無垠的宇宙，由於恆星才有了光，才有了生命。<br>
+                        科技始終來自於人性，原本只是小說中的科幻，隨著科技樹的累積，變成你我的日常。<br>
+                        恆星網路科技，集結超過百人團隊，琢磨、洗滌、焠煉 服務流程，撰寫、編織、演奏 程式碼。<br>
+                        <br>
+                        讓您的公司商業模式上軌道，<br>
+                        讓您的使用者愛用您的服務。<br>
+                        <br>
+                        恆星網路科技 B2B網路軟體服務，您事業的好伙伴<br>
+                        歡迎您加入我們的行列！<br>
+                    </p>
+                </div>
+                <div class="hr" id="ser">
+                </div>
+                <div class="service">
+                    <div class="title_about">
+                        <div class="cn_title">服務項目</div>
+                        <div class="en_title">SERVICE</div>
+                    </div>
+                    <div class="service_cont">
+                        <div class="ser ser_first">
+                            <div class="ic_s img_001"><img src="img/EARTH.svg" alt=""></div>
+                            <div class="title_sub">B2B 網路軟體服務</div>
+                            <!-- <a href="" class="more">了解更多</a> -->
+                        </div>
+                        <div class="ser ser_second">
+                            <div class="ic_s img_002"><img src="img/PLANET.svg" alt=""></div>
+                            <div class="title_sub">影音直播平台</div>
+                            <!-- <a href="" class="more">了解更多</a> -->
+                        </div>
+                        <div class="ser ser_third">
+                            <div class="ic_s img_003"><img src="img/COMET.svg" alt=""></div>
+                            <div class="title_sub">社群、遊戲平台</div>
+                            <!-- <a href="" class="more">了解更多</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact" id="contact">
+            <div class="title_about title_contact">
+                <div class="cn_title">聯絡我們</div>
+                <div class="en_title">CONTACT US</div>
+            </div>
+            <div class="cont">
+                <div class="email">
+                    <div class="title">信箱 E-MAIL</div>
+                    <div class="cont">@solartninc.com</div>
+                </div>
+                <div class="add">
+                    <div class="title">地址 ADD</div>
+                    <div class="cont">台北市大安區敦化南路二段99-97號31樓</div>
+                </div>
+            </div>
+            <div class="BG-img">
+                <img src="img/ANG_B.png" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            <div class="re">© 2019 SolarTech. All rights reserved.
+            </div>
+            <div class="re">www.solartninc.com</div>
+        </div>
+    </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.hot-spot').click(function () {
+                $('.nav-panel').toggleClass('show');
+            })
+            $("#aboutbtn").click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#about").offset().top
+                }, 1000);
+            });
+            $("#serbtn").click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#ser").offset().top
+                }, 1000);
+            });
+            $("#contactbtn").click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#contact").offset().top
+                }, 1000);
+            });
+        })
+    </script>
 </body>
 
 </html>
