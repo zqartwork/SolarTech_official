@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 </head>
 <style>
+    html {
+        cursor: auto;
+        cursor: url("https://media.giphy.com/media/5BZslN01evFcI/giphy.gif"), auto;
+    }
+
     div {
         /* border: 1px solid red; */
     }
@@ -625,6 +630,11 @@
                     }
                 });
                 $window.trigger('scroll');
+            });
+        });
+        $(document).ready(function () {
+            $('nav-icon3').click(function () {
+                $(this).toggleClass('open');
             });
         });
     </script>
