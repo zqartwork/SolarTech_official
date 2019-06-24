@@ -156,15 +156,9 @@
                 <div class="footer_logo">
                     <img src="img/svg/logo.svg" alt="">
                 </div>
-                <div class="text-part">
-                    <div class="mail_part">
-                        <img src="img/svg/mail_icon.svg" alt="">
-                        <div>@solartninc.com</div>
-                    </div>
-                    <div class="map_part">
-                        <img src="img/svg/icon.svg" alt="">
-                        <div>台北市大安區敦化南路二段99-97號31樓</div>
-                    </div>
+                <div class="map_part">
+                    <img src="img/svg/icon.svg" alt="">
+                    <div>台北市大安區敦化南路二段99-97號31樓</div>
                 </div>
             </div>
         </div>
@@ -482,8 +476,7 @@
     }
 
     .section_003>.flex_wrapper,
-    .section_002>.flex_wrapper,
-    .section_004>.flex_wrapper {
+    .section_002>.flex_wrapper {
         max-width: 1000px;
         justify-content: space-between;
         /* text-align: center; */
@@ -503,11 +496,13 @@
     .text-part {
         display: flex;
         flex: .4;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .footer_logo {
-        flex: .2;
+        flex: .5;
+        display: flex;
+        justify-content: center;
     }
 
     .footer_logo>img {
@@ -516,10 +511,11 @@
 
     .mail_part,
     .map_part {
-        display: flex;
         align-items: center;
         color: #fff;
-
+        flex: .5;
+        display: flex;
+        justify-content: center;
         white-space: nowrap;
     }
 
@@ -857,6 +853,11 @@
             top: -50px;
         }
 
+        .footer_logo {
+            width: 100%;
+            margin-bottom: 5rem;
+        }
+
     }
 
     @media (max-width: 700px) {
@@ -867,10 +868,6 @@
             height: 100%;
         }
 
-        .footer_logo {
-            width: 100%;
-            margin-bottom: 3rem;
-        }
 
         .text-part {
             flex: 1;
@@ -959,6 +956,31 @@
             width: 85%;
         }
 
+        .content-part {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about_logo,
+        .about_line,
+        .about_content_001,
+        .about_content_002 {
+            flex: none;
+            white-space: wrap;
+        }
+
+        .left {
+            margin-top: 25%;
+        }
+
+        .footer_logo {
+            margin-bottom: 0rem;
+        }
+
+        .map_part {
+            margin-top: 0;
+        }
+
     }
 
     @media (max-width: 420px) {
@@ -984,8 +1006,16 @@
 
         .left {
             margin-left: 0%;
+            margin-top: 0;
         }
 
+        .section_001 {
+            height: 760px;
+        }
+
+        .right {
+            flex: .5;
+        }
     }
 
     .dec_m {
@@ -1001,7 +1031,11 @@
 
         .section_001 {
             padding-top: 550px;
-            height: 900px;
+            height: 700px;
+        }
+
+        .right {
+            flex: .2;
         }
     }
 </style>
